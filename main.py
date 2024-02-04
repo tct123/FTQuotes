@@ -13,12 +13,14 @@ def main(page: ft.Page):
         title=ft.Text("FTQuotes"),
     )
     page.navigation_bar = ft.NavigationBar(
-       destinations=[
-           ft.NavigationDestination(icon=ft.icons.EXPLORE, label="Quotes"),
-           ft.NavigationDestination(icon=ft.icons.EMOJI_EMOTIONS, label="Random Quotes"),
-           ft.NavigationDestination(icon=ft.icons.FAVORITE, label="Favorite"),
-       ],
-       # bgcolor=ft.colors.RED,
+        destinations=[
+            ft.NavigationDestination(icon=ft.icons.EXPLORE, label="Quotes"),
+            ft.NavigationDestination(
+                icon=ft.icons.EMOJI_EMOTIONS, label="Random Quotes"
+            ),
+            ft.NavigationDestination(icon=ft.icons.FAVORITE, label="Favorite"),
+        ],
+        # bgcolor=ft.colors.RED,
     )
     dd = ft.Dropdown(
         value="age",
@@ -112,7 +114,12 @@ def main(page: ft.Page):
     page.floating_action_button = ft.FloatingActionButton(
         icon=ft.icons.UPDATE, on_click=newquotes
     )
-    body = ft.Column(controls=[quote_content, ft.Row(controls=[dd,ft.IconButton(icon=ft.icons.FAVORITE)])]) # author
+    body = ft.Column(
+        controls=[
+            quote_content,
+            ft.Row(controls=[dd, ft.IconButton(icon=ft.icons.FAVORITE)]),
+        ]
+    )  # author
     page.add(ft.SafeArea(body))
 
 
