@@ -1,3 +1,4 @@
 flet
 quotesgeneratorapi-wrapper
 python-dotenv
+flet-route
