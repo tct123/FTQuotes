@@ -7,8 +7,10 @@ def createlist():
     # for eintrag in mylist:
     #    secondlist.append(eintrag)
     # print(secondlist)
+    print("mylist = [")
     for entry in mylist:
-        print(f'ft.dropdown.Option("{entry}"),')
+        print(f'    "{entry}",')
+    print("]")
 
 
 createlist()
