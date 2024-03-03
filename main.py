@@ -21,6 +21,7 @@ def main(page: ft.Page):
             ft.NavigationDestination(icon=ft.icons.FAVORITE, label="Favorite"),
         ],
         # bgcolor=ft.colors.RED,
+        adaptive=True,
     )
     dd = ft.Dropdown(
         value="age",
