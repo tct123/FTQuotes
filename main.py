@@ -21,7 +21,7 @@ def rand_quote(page: ft.page):
     q = quote.getQuotes(api_key=API_KEY, category="age")
     quote_content = ft.Text(q)
     author = ft.Text()
-
+ 
     def newquotes(e):
         qnew = quote.getQuotes(api_key=API_KEY, category=dd.value)
         quote_content.clean()
