@@ -47,9 +47,7 @@ def quote_tab(page: ft.Page):
     dd = ft.Dropdown(
         value="age",
         width=200,
-        options=[
-            ft.dropdown.Option(i) for i in mylist
-        ],
+        options=[ft.dropdown.Option(i) for i in mylist],
     )
 
     page.update()
