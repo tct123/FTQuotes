@@ -73,6 +73,7 @@ def quote_tab(page: ft.Page):
     body = ft.Column(
         controls=[
             quote_content,
+            author,
             ft.Row(controls=[dd, ft.IconButton(icon=ft.icons.FAVORITE)]),
         ]
     )  # author
