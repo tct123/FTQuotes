@@ -79,6 +79,8 @@ def quote_tab(page: ft.Page):
 
 def main(page: ft.Page):
     page.appbar = ft.AppBar(title=ft.Text("FTQuotes"))
+    page.adaptive = True
+    page.auto_scroll = True
     page.navigation_bar = ft.NavigationBar(
         destinations=[
             ft.NavigationDestination(icon=ft.icons.EXPLORE, label="Quotes"),
