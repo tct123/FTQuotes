@@ -51,16 +51,18 @@ def quote_tab(page: ft.Page):
     )
 
     page.update()
-    q = quote.getQuotes(api_key=API_KEY, category="age")
+    q, a = quote.getQuotes(api_key=API_KEY, category="age").split("\n\n")
     quote_content = ft.Text(q)
-    author = ft.Text()
+    author = ft.Text(a)
 
     def newquotes(e):
-        qnew = quote.getQuotes(api_key=API_KEY, category=dd.value)
+        qnew, anew = quote.getQuotes(api_key=API_KEY, category=dd.value).split("\n\n")
         quote_content.clean()
-        quote_content.update()
         quote_content.value = qnew
         quote_content.update()
+        author.clean()
+        author.value = anew
+        author.update()
         body.update()
         page.update()
         # print("Funktioniert")
