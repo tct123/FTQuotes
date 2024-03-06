@@ -82,8 +82,8 @@ def quote_tab(page: ft.Page):
         else:
             likebutton.icon = ft.icons.FAVORITE_OUTLINE
             likebutton.update()
-            page.client_storage.remove("QUOTE")
-            page.client_storage.remove("AUTHOR")
+            page.client_storage.remove(quote_content.value)
+            page.client_storage.remove(author.value)
             body.update()
             page.update()
 
