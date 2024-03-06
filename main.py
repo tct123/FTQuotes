@@ -72,14 +72,20 @@ def quote_tab(page: ft.Page):
     )
 
     def add_remove_favourite(e):
-        if icon == ft.icons.FAVORITE_OUTLINE:
-            icon = ft.icons.FAVORITE
+        if likebutton.icon == ft.icons.FAVORITE_OUTLINE:
+            likebutton.icon = ft.icons.FAVORITE
+            likebutton.update()
             body.update()
+            page.update()
         else:
-            icon = ft.icons.FAVORITE_OUTLINE
+            likebutton.icon = ft.icons.FAVORITE_OUTLINE
+            likebutton.update()
             body.update()
+            page.update()
 
-    icon = ft.icons.FAVORITE_OUTLINE
+    likebutton = ft.IconButton(
+        icon=ft.icons.FAVORITE_OUTLINE, on_click=lambda e: add_remove_favourite(e=e)
+    )
     body = ft.Column(
         controls=[
             quote_content,
@@ -87,9 +93,7 @@ def quote_tab(page: ft.Page):
             ft.Row(
                 controls=[
                     dd,
-                    ft.IconButton(
-                        icon=icon, on_click=lambda e: add_remove_favourite(e=e)
-                    ),
+                    likebutton,
                 ]
             ),
         ]
