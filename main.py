@@ -70,11 +70,28 @@ def quote_tab(page: ft.Page):
     page.floating_action_button = ft.FloatingActionButton(
         icon=ft.icons.UPDATE, on_click=newquotes
     )
+
+    def add_remove_favourite(e):
+        if icon == ft.icons.FAVORITE_OUTLINE:
+            icon = ft.icons.FAVORITE
+            body.update()
+        else:
+            icon = ft.icons.FAVORITE_OUTLINE
+            body.update()
+
+    icon = ft.icons.FAVORITE_OUTLINE
     body = ft.Column(
         controls=[
             quote_content,
             author,
-            ft.Row(controls=[dd, ft.IconButton(icon=ft.icons.FAVORITE)]),
+            ft.Row(
+                controls=[
+                    dd,
+                    ft.IconButton(
+                        icon=icon, on_click=lambda e: add_remove_favourite(e=e)
+                    ),
+                ]
+            ),
         ]
     )  # author
     return body
