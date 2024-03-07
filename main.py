@@ -9,7 +9,7 @@ dv.load_dotenv()
 API_KEY = os.getenv("API_NINJAS_KEY")
 
 
-def rand_quote(page: ft.page):
+def rand_quote(page: ft.Page):
     dd = ft.Dropdown(
         value="age",
         width=200,
