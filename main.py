@@ -12,7 +12,7 @@ API_KEY = os.getenv("API_NINJAS_KEY")
 def rand_quote(page: ft.Page):
     dd = ft.Dropdown(
         value="age",
-        width=200,
+        # width=200,
         options=[ft.dropdown.Option(i) for i in mylist],
     )
 
@@ -46,7 +46,7 @@ def rand_quote(page: ft.Page):
 def quote_tab(page: ft.Page):
     dd = ft.Dropdown(
         value="age",
-        width=200,
+        # width=200,
         options=[ft.dropdown.Option(i) for i in mylist],
     )
 
