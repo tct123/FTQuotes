@@ -112,7 +112,8 @@ def main(page: ft.Page):
     page.adaptive = True
     page.scroll = True
     aboutdialog = ft.AlertDialog(
-        title=ft.Text(tr(csv_file=lf, target_key="ABOUTHEADER")),content=ft.Text(tr(csv_file=lf, target_key="ABOUT"))
+        title=ft.Text(tr(csv_file=lf, target_key="ABOUTHEADER")),
+        content=ft.Text(tr(csv_file=lf, target_key="ABOUT")),
     )
     page.navigation_bar = ft.NavigationBar(
         destinations=[
