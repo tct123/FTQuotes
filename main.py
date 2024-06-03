@@ -6,7 +6,8 @@ from mylist import mylist
 
 dv.load_dotenv()
 API_KEY = os.getenv("API_NINJAS_KEY")
-version = "2024.06.03" # YYYY.MM.DD
+version = "2024.06.03"  # YYYY.MM.DD
+
 
 def rand_quote(page: ft.Page):
     dd = ft.Dropdown(
