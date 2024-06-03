@@ -7,6 +7,7 @@ from mylist import mylist
 dv.load_dotenv()
 API_KEY = os.getenv("API_NINJAS_KEY")
 version = "2024.06.03"  # YYYY.MM.DD
+lf = "assets/localisation.csv"  # localisationfile
 
 
 def rand_quote(page: ft.Page):
