@@ -3,7 +3,7 @@ import os
 import dotenv as dv
 import quotesgeneratorapi_wrapper as quote
 from mylist import mylist
-quote.
+#quote.
 
 dv.load_dotenv()
 API_KEY = os.getenv("API_NINJAS_KEY")
