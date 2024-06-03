@@ -112,7 +112,10 @@ def main(page: ft.Page):
         aboutdialog.open = True
 
     page.title = "FTQuotes"
-    page.appbar = ft.AppBar(title=ft.Text(page.title))
+    page.appbar = ft.AppBar(
+        title=ft.Text(page.title),
+        actions=[ft.PopupMenuItem(text=tr(csv_file=lf, target_key="ABOUTHEADER"))],
+    )
     page.adaptive = True
     page.scroll = True
     aboutdialog = ft.AlertDialog(
