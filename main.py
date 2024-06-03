@@ -3,6 +3,7 @@ import os
 import dotenv as dv
 import quotesgeneratorapi_wrapper.quotesgenerator as quote
 from mylist import mylist
+from mylocale.TR import tr
 
 dv.load_dotenv()
 API_KEY = os.getenv("API_NINJAS_KEY")
@@ -110,7 +111,9 @@ def main(page: ft.Page):
     page.appbar = ft.AppBar(title=ft.Text("FTQuotes"))
     page.adaptive = True
     page.scroll = True
-    aboutdialog = ft.
+    aboutdialog = ft.AlertDialog(
+        title=ft.Text(tr(csv_file=lf, target_key="ABOUTHEADER"))
+    )
     page.navigation_bar = ft.NavigationBar(
         destinations=[
             ft.NavigationDestination(icon=ft.icons.EXPLORE, label="Quotes"),
