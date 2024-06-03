@@ -1,9 +1,8 @@
 import flet as ft
 import os
 import dotenv as dv
-import quotesgeneratorapi_wrapper as quote
+import quotesgeneratorapi_wrapper.quotesgenerator as quote
 from mylist import mylist
-#quote.
 
 dv.load_dotenv()
 API_KEY = os.getenv("API_NINJAS_KEY")
