@@ -108,13 +108,16 @@ def quote_tab(page: ft.Page):
 
 
 def main(page: ft.Page):
+    def open_aboutdialog():
+        aboutdialog.open = True
+
     page.title = "FTQuotes"
     page.appbar = ft.AppBar(title=ft.Text(page.title))
     page.adaptive = True
     page.scroll = True
     aboutdialog = ft.AlertDialog(
         title=ft.Text(tr(csv_file=lf, target_key="ABOUTHEADER")),
-        content=ft.Text(f"{tr(csv_file=lf, target_key="ABOUT")} + {version}"),
+        content=ft.Text(f"{tr(csv_file=lf, target_key='ABOUT')} + {version}"),
     )
     page.navigation_bar = ft.NavigationBar(
         destinations=[
