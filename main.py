@@ -110,7 +110,7 @@ def main(page: ft.Page):
     page.appbar = ft.AppBar(title=ft.Text("FTQuotes"))
     page.adaptive = True
     page.scroll = True
-    # aboutdialog = ft
+    aboutdialog = ft.
     page.navigation_bar = ft.NavigationBar(
         destinations=[
             ft.NavigationDestination(icon=ft.icons.EXPLORE, label="Quotes"),
