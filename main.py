@@ -109,8 +109,7 @@ def quote_tab(page: ft.Page):
 
 def main(page: ft.Page):
     def open_aboutdialog(e):
-        page.dialog = aboutdialog
-        aboutdialog.open = True
+        page.open(aboutdialog)
         page.update()
 
     page.title = "FTQuotes"
@@ -136,11 +135,11 @@ def main(page: ft.Page):
     )
     page.navigation_bar = ft.NavigationBar(
         destinations=[
-            ft.NavigationDestination(icon=ft.icons.EXPLORE, label="Quotes"),
-            ft.NavigationDestination(
+            ft.NavigationBarDestination(icon=ft.icons.EXPLORE, label="Quotes"),
+            ft.NavigationBarDestination(
                 icon=ft.icons.EMOJI_EMOTIONS, label="Random Quotes"
             ),
-            ft.NavigationDestination(icon=ft.icons.FAVORITE, label="Favorite"),
+            ft.NavigationBarDestination(icon=ft.icons.FAVORITE, label="Favorite"),
         ],
         adaptive=True,
     )
