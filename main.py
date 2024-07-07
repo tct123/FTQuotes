@@ -96,12 +96,14 @@ def quote_tab(page: ft.Page):
         controls=[
             quote_content,
             author,
-            ft.Row(
-                controls=[
-                    dd,
-                    likebutton,
-                ]
-            ),
+            dd,
+            likebutton,
+            # ft.Row(
+            #    controls=[
+            #        dd,
+            #        likebutton,
+            #    ]
+            # ),
         ]
     )  # author
     return body
