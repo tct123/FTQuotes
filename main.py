@@ -4,11 +4,14 @@ import dotenv as dv
 import quotesgeneratorapi_wrapper.quotesgenerator as quote
 from mylist import mylist
 from mylocale.TR import tr
+import locale
 
 dv.load_dotenv()
 API_KEY = os.getenv("API_NINJAS_KEY")
 version = "2024.06.03"  # YYYY.MM.DD
 lf = "assets/localisation.csv"  # localisationfile
+lang = locale.getlocale()[0]
+print(lang)
 
 
 def rand_quote(page: ft.Page):
@@ -121,7 +124,7 @@ def main(page: ft.Page):
             ft.PopupMenuButton(
                 items=[
                     ft.PopupMenuItem(
-                        text=tr(csv_file=lf, target_key="ABOUTHEADER"),
+                        text=tr(csv_file=lf, target_key="ABOUTHEADER", langcode=lang),
                         on_click=open_aboutdialog,
                     )
                 ]
@@ -131,8 +134,10 @@ def main(page: ft.Page):
     page.adaptive = True
     page.scroll = True
     aboutdialog = ft.AlertDialog(
-        title=ft.Text(tr(csv_file=lf, target_key="ABOUTHEADER")),
-        content=ft.Text(f"{tr(csv_file=lf, target_key='ABOUT')} + {version}"),
+        title=ft.Text(tr(csv_file=lf, target_key="ABOUTHEADER", langcode=lang)),
+        content=ft.Text(
+            f"{tr(csv_file=lf, target_key='ABOUT', langcode=lang)} + {version}"
+        ),
         scrollable=True,
     )
     # page.navigation_bar = ft.NavigationBar(
