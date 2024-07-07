@@ -133,16 +133,16 @@ def main(page: ft.Page):
         content=ft.Text(f"{tr(csv_file=lf, target_key='ABOUT')} + {version}"),
         scrollable=True,
     )
-    page.navigation_bar = ft.NavigationBar(
-        destinations=[
-            ft.NavigationBarDestination(icon=ft.icons.EXPLORE, label="Quotes"),
-            ft.NavigationBarDestination(
-                icon=ft.icons.EMOJI_EMOTIONS, label="Random Quotes"
-            ),
-            ft.NavigationBarDestination(icon=ft.icons.FAVORITE, label="Favorite"),
-        ],
-        adaptive=True,
-    )
+    # page.navigation_bar = ft.NavigationBar(
+    #    destinations=[
+    #        ft.NavigationBarDestination(icon=ft.icons.EXPLORE, label="Quotes"),
+    #        ft.NavigationBarDestination(
+    #            icon=ft.icons.EMOJI_EMOTIONS, label="Random Quotes"
+    #        ),
+    #        ft.NavigationBarDestination(icon=ft.icons.FAVORITE, label="Favorite"),
+    #    ],
+    #    adaptive=True,
+    # )
 
     tabquotes = quote_tab(page=page)
     page.add(ft.SafeArea(tabquotes))
