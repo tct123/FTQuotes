@@ -1,4 +1,4 @@
 flet
-quotesgeneratorapi-wrapper
-python-dotenv
+quotesgeneratorapi_wrapper
+python_dotenv
 mylocale
