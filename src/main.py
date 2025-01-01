@@ -3,7 +3,7 @@ import os
 import dotenv as dv
 import quotesgeneratorapi_wrapper.quotesgenerator as quote
 from mylist import mylist
-from mylocale.TR import tr
+from mylocale import tr
 import locale
 
 dv.load_dotenv()
@@ -11,41 +11,6 @@ API_KEY = os.getenv("API_NINJAS_KEY")
 version = "2024.06.03"  # YYYY.MM.DD
 lf = "assets/localisation.csv"  # localisationfile
 lang = locale.getlocale()[0].split("_")[0]
-print(lang)
-
-
-def rand_quote(page: ft.Page):
-    # dd = ft.Dropdown(
-    #    value="age",
-    #    # width=200,
-    #    options=[ft.dropdown.Option(i) for i in mylist],
-    # )
-
-    page.update()
-    q = quote.getQuotes(api_key=API_KEY)  # category="age"
-    quote_content = ft.Text(q)
-    author = ft.Text()
-
-    def newquotes(e):
-        qnew = quote.getQuotes(api_key=API_KEY)  # category=dd.value
-        quote_content.clean()
-        quote_content.update()
-        quote_content.value = qnew
-        quote_content.update()
-        body.update()
-        page.update()
-        # print("Funktioniert")
-
-    page.floating_action_button = ft.FloatingActionButton(
-        icon=ft.Icons.UPDATE, on_click=newquotes
-    )
-    body = ft.Column(
-        controls=[
-            quote_content,
-            ft.Row(controls=[ft.IconButton(icon=ft.Icons.FAVORITE)]),  # dd
-        ]
-    )  # author
-    return body
 
 
 def quote_tab(page: ft.Page):
@@ -84,30 +49,10 @@ def quote_tab(page: ft.Page):
         icon=ft.Icons.UPDATE, on_click=newquotes
     )
 
-    def add_remove_favourite(e):
-        if likebutton.icon == ft.Icons.FAVORITE_OUTLINE:
-            likebutton.icon = ft.Icons.FAVORITE
-            page.client_storage.set("QUOTE", quote_content.value)
-            page.client_storage.set("AUTHOR", author.value)
-            likebutton.update()
-            body.update()
-            page.update()
-        else:
-            likebutton.icon = ft.Icons.FAVORITE_OUTLINE
-            likebutton.update()
-            page.client_storage.remove(quote_content.value)
-            page.client_storage.remove(author.value)
-            body.update()
-            page.update()
-
-    likebutton = ft.IconButton(
-        icon=ft.Icons.FAVORITE_OUTLINE, on_click=lambda e: add_remove_favourite(e=e)
-    )
     body = ft.Column(
         controls=[
             quote_content,
             author,  # dd
-            likebutton,
             # ft.Row(
             #    controls=[
             #        dd,
@@ -138,6 +83,7 @@ def main(page: ft.Page):
             ),
         ],
     )
+    # page.media = ft.PageMediaData()
     page.adaptive = True
     page.scroll = True
     aboutdialog = ft.AlertDialog(
