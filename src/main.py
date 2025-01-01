@@ -37,12 +37,12 @@ def rand_quote(page: ft.Page):
         # print("Funktioniert")
 
     page.floating_action_button = ft.FloatingActionButton(
-        icon=ft.icons.UPDATE, on_click=newquotes
+        icon=ft.Icons.UPDATE, on_click=newquotes
     )
     body = ft.Column(
         controls=[
             quote_content,
-            ft.Row(controls=[ft.IconButton(icon=ft.icons.FAVORITE)]),  # dd
+            ft.Row(controls=[ft.IconButton(icon=ft.Icons.FAVORITE)]),  # dd
         ]
     )  # author
     return body
@@ -81,19 +81,19 @@ def quote_tab(page: ft.Page):
         # print("Funktioniert")
 
     page.floating_action_button = ft.FloatingActionButton(
-        icon=ft.icons.UPDATE, on_click=newquotes
+        icon=ft.Icons.UPDATE, on_click=newquotes
     )
 
     def add_remove_favourite(e):
-        if likebutton.icon == ft.icons.FAVORITE_OUTLINE:
-            likebutton.icon = ft.icons.FAVORITE
+        if likebutton.icon == ft.Icons.FAVORITE_OUTLINE:
+            likebutton.icon = ft.Icons.FAVORITE
             page.client_storage.set("QUOTE", quote_content.value)
             page.client_storage.set("AUTHOR", author.value)
             likebutton.update()
             body.update()
             page.update()
         else:
-            likebutton.icon = ft.icons.FAVORITE_OUTLINE
+            likebutton.icon = ft.Icons.FAVORITE_OUTLINE
             likebutton.update()
             page.client_storage.remove(quote_content.value)
             page.client_storage.remove(author.value)
@@ -101,7 +101,7 @@ def quote_tab(page: ft.Page):
             page.update()
 
     likebutton = ft.IconButton(
-        icon=ft.icons.FAVORITE_OUTLINE, on_click=lambda e: add_remove_favourite(e=e)
+        icon=ft.Icons.FAVORITE_OUTLINE, on_click=lambda e: add_remove_favourite(e=e)
     )
     body = ft.Column(
         controls=[
@@ -149,11 +149,11 @@ def main(page: ft.Page):
     )
     # page.navigation_bar = ft.NavigationBar(
     #    destinations=[
-    #        ft.NavigationBarDestination(icon=ft.icons.EXPLORE, label="Quotes"),
+    #        ft.NavigationBarDestination(icon=ft.Icons.EXPLORE, label="Quotes"),
     #        ft.NavigationBarDestination(
-    #            icon=ft.icons.EMOJI_EMOTIONS, label="Random Quotes"
+    #            icon=ft.Icons.EMOJI_EMOTIONS, label="Random Quotes"
     #        ),
-    #        ft.NavigationBarDestination(icon=ft.icons.FAVORITE, label="Favorite"),
+    #        ft.NavigationBarDestination(icon=ft.Icons.FAVORITE, label="Favorite"),
     #    ],
     #    adaptive=True,
     # )
