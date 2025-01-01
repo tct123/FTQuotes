@@ -1,4 +1,0 @@
-flet
-quotesgeneratorapi_wrapper
-python_dotenv
-mylocale

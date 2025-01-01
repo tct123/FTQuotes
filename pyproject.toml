@@ -1,0 +1,31 @@
+[project]
+name = "ftquotes"
+version = "0.1.0"
+description = ""
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+  "flet==0.26.0.dev3912",
+  "quotesgeneratorapi_wrapper",
+  "python_dotenv",
+  "mylocale",
+]
+
+
+[tool.flet]
+# org name in reverse domain name notation, e.g. "com.mycompany".
+# Combined with project.name to build bundle ID for iOS and Android apps
+org = "de.cmg"
+
+# project display name that is used as an app title on Android and iOS home screens,
+# shown in window titles and about app dialogs on desktop.
+product = "FTQuotes"
+
+# company name to display in about app dialogs
+company = "Creative Media Group"
+
+# copyright text to display in about app dialogs
+copyright = "Copyright (C) 2024 by Creative Media Group"
+
+[tool.flet.app]
+path = "src"

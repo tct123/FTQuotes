@@ -15,19 +15,19 @@ print(lang)
 
 
 def rand_quote(page: ft.Page):
-    dd = ft.Dropdown(
-        value="age",
-        # width=200,
-        options=[ft.dropdown.Option(i) for i in mylist],
-    )
+    # dd = ft.Dropdown(
+    #    value="age",
+    #    # width=200,
+    #    options=[ft.dropdown.Option(i) for i in mylist],
+    # )
 
     page.update()
-    q = quote.getQuotes(api_key=API_KEY, category="age")
+    q = quote.getQuotes(api_key=API_KEY)  # category="age"
     quote_content = ft.Text(q)
     author = ft.Text()
 
     def newquotes(e):
-        qnew = quote.getQuotes(api_key=API_KEY, category=dd.value)
+        qnew = quote.getQuotes(api_key=API_KEY)  # category=dd.value
         quote_content.clean()
         quote_content.update()
         quote_content.value = qnew
@@ -42,26 +42,34 @@ def rand_quote(page: ft.Page):
     body = ft.Column(
         controls=[
             quote_content,
-            ft.Row(controls=[dd, ft.IconButton(icon=ft.icons.FAVORITE)]),
+            ft.Row(controls=[ft.IconButton(icon=ft.icons.FAVORITE)]),  # dd
         ]
     )  # author
     return body
 
 
 def quote_tab(page: ft.Page):
-    dd = ft.Dropdown(
-        value="age",
-        # width=200,
-        options=[ft.dropdown.Option(i) for i in mylist],
-    )
+    # dd = ft.Dropdown(
+    #    value="age",
+    #    # width=200,
+    #    options=[ft.dropdown.Option(i) for i in mylist],
+    # )
 
     page.update()
-    q, a = quote.getQuotes(api_key=API_KEY, category="age").split("\n\n")
+    q, a = quote.getQuotes(
+        api_key=API_KEY,
+    ).split(
+        "\n\n"
+    )  # category="age"
     quote_content = ft.Text(q)
     author = ft.Text(a)
 
     def newquotes(e):
-        qnew, anew = quote.getQuotes(api_key=API_KEY, category=dd.value).split("\n\n")
+        qnew, anew = quote.getQuotes(
+            api_key=API_KEY,
+        ).split(
+            "\n\n"
+        )  # category=dd.value
         quote_content.clean()
         quote_content.value = qnew
         quote_content.update()
@@ -98,8 +106,7 @@ def quote_tab(page: ft.Page):
     body = ft.Column(
         controls=[
             quote_content,
-            author,
-            dd,
+            author,  # dd
             likebutton,
             # ft.Row(
             #    controls=[
