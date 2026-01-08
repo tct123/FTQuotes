@@ -4,8 +4,8 @@ import dotenv as dv
 import quotesgeneratorapi_wrapper.quotesgenerator as quote
 from mylist import mylist
 from mylocale import TR
-import locale
 from pathlib import Path
+from flet_localisation import locale
 
 
 def quote_tab(page: ft.Page, api_key):
@@ -62,14 +62,12 @@ def main(page: ft.Page):
         page.open(aboutdialog)
         page.update()
 
-    dv.load_dotenv()
-    API_KEY = os.getenv("API_NINJAS_KEY")
     path = Path(__file__).resolve().parent
+    dotenv_path = os.path.join(path, ".env")
+    dv.load_dotenv(dotenv_path=dotenv_path)
+    API_KEY = os.getenv("API_NINJAS_KEY")
     lf = os.path.join(path, "assets/localisation.csv")  # localisationfile
-    try:
-        lang = locale.getlocale()[0].split("_")[0]
-    except:
-        lang = ""
+    lang = locale(platform=page.platform)
     tr = TR(langcode="en", csv_file=lf)
     page.title = "FTQuotes"
     page.appbar = ft.AppBar(

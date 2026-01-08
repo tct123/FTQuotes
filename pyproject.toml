@@ -1,7 +1,7 @@
 [project]
 name = "ftquotes"
 version = "2025.01.01"
-description = ""
+description = "A Quotes App"
 readme = "README.md"
 requires-python = ">=3.10"
 authors = [{ name = "Flet developer", email = "you@example.com" }]
@@ -10,6 +10,7 @@ dependencies = [
   "quotesgeneratorapi_wrapper",
   "python_dotenv",
   "mylocale",
+  "flet-localisation",
 ]
 
 [dependency-groups]
@@ -23,3 +24,9 @@ copyright = "Copyright (C) 2026 by Creative Media Group"
 
 [tool.flet.app]
 path = "src"
+
+[tool.flet.android]
+dependencies = ["pyjnius"]
+
+[tool.flet.ios]
+dependencies = ["pyobjus"]
