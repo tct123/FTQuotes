@@ -5,6 +5,7 @@ import quotesgeneratorapi_wrapper.quotesgenerator as quote
 from mylist import mylist
 from mylocale import TR
 import locale
+from pathlib import Path
 
 
 def quote_tab(page: ft.Page, api_key):
@@ -63,7 +64,8 @@ def main(page: ft.Page):
 
     dv.load_dotenv()
     API_KEY = os.getenv("API_NINJAS_KEY")
-    lf = "src/assets/localisation.csv"  # localisationfile
+    path = Path(__file__).resolve().parent
+    lf = os.path.join(path, "assets/localisation.csv")  # localisationfile
     try:
         lang = locale.getlocale()[0].split("_")[0]
     except:
