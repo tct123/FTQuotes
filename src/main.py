@@ -29,10 +29,8 @@ def quote_tab(page: ft.Page, api_key):
         ).split(
             "\n\n"
         )  # category=dd.value
-        quote_content.clean()
         quote_content.value = qnew
         quote_content.update()
-        author.clean()
         author.value = anew
         author.update()
         body.update()
