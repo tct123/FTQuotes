@@ -6,6 +6,7 @@ from mylist import mylist
 from mylocale import TR
 from pathlib import Path
 from flet_localisation import locale
+from localisations import *
 
 
 def quote_tab(page: ft.Page, api_key):
@@ -66,8 +67,8 @@ def main(page: ft.Page):
     dotenv_path = os.path.join(path, ".env")
     dv.load_dotenv(dotenv_path=dotenv_path)
     API_KEY = os.getenv("API_NINJAS_KEY")
-    lf = os.path.join(path, "assets/localisation.csv")  # localisationfile
-    lang = locale(platform=page.platform)
+    lf = os.path.join(path, "localisations/localisation.csv")  # localisationfile
+    lang = locale(platform=str(page.platform))
     tr = TR(langcode="en", csv_file=lf)
     page.title = "FTQuotes"
     page.appbar = ft.AppBar(
@@ -76,7 +77,7 @@ def main(page: ft.Page):
             ft.PopupMenuButton(
                 items=[
                     ft.PopupMenuItem(
-                        tooltip=tr.tr(target_key="ABOUTHEADER", langcode=lang),
+                        tooltip=ABOUTHEADER(page=page),
                         on_click=open_aboutdialog,
                     )
                 ]
@@ -88,8 +89,8 @@ def main(page: ft.Page):
     page.scroll = True
     version = ""
     aboutdialog = ft.AlertDialog(
-        title=ft.Text(tr.tr(target_key="ABOUTHEADER", langcode=lang)),
-        content=ft.Text(f"{tr.tr( target_key='ABOUT', langcode=lang)} + {version}"),
+        title=ft.Text(ABOUTHEADER(page=page)),
+        content=ft.Text(f"{ABOUT(page=page)} + {version}"),
         scrollable=True,
     )
     # page.navigation_bar = ft.NavigationBar(
