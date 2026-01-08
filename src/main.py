@@ -3,17 +3,11 @@ import os
 import dotenv as dv
 import quotesgeneratorapi_wrapper.quotesgenerator as quote
 from mylist import mylist
-from mylocale import tr
+from mylocale import TR
 import locale
 
-dv.load_dotenv()
-API_KEY = os.getenv("API_NINJAS_KEY")
-version = "2024.06.03"  # YYYY.MM.DD
-lf = "assets/localisation.csv"  # localisationfile
-lang = locale.getlocale()[0].split("_")[0]
 
-
-def quote_tab(page: ft.Page):
+def quote_tab(page: ft.Page, api_key):
     # dd = ft.Dropdown(
     #    value="age",
     #    # width=200,
@@ -22,16 +16,16 @@ def quote_tab(page: ft.Page):
 
     page.update()
     q, a = quote.getQuotes(
-        api_key=API_KEY,
+        api_key=api_key,
     ).split(
         "\n\n"
     )  # category="age"
     quote_content = ft.Text(q)
     author = ft.Text(a)
 
-    def newquotes(e):
+    def newquotes(e, api_key):
         qnew, anew = quote.getQuotes(
-            api_key=API_KEY,
+            api_key=api_key,
         ).split(
             "\n\n"
         )  # category=dd.value
@@ -46,7 +40,7 @@ def quote_tab(page: ft.Page):
         # print("Funktioniert")
 
     page.floating_action_button = ft.FloatingActionButton(
-        icon=ft.Icons.UPDATE, on_click=newquotes
+        icon=ft.Icons.UPDATE, on_click=lambda e: newquotes(e=e, api_key=api_key)
     )
 
     body = ft.Column(
@@ -69,6 +63,14 @@ def main(page: ft.Page):
         page.open(aboutdialog)
         page.update()
 
+    dv.load_dotenv()
+    API_KEY = os.getenv("API_NINJAS_KEY")
+    lf = "src/assets/localisation.csv"  # localisationfile
+    try:
+        lang = locale.getlocale()[0].split("_")[0]
+    except:
+        lang = ""
+    tr = TR(langcode="en", csv_file=lf)
     page.title = "FTQuotes"
     page.appbar = ft.AppBar(
         title=ft.Text(page.title),
@@ -76,7 +78,7 @@ def main(page: ft.Page):
             ft.PopupMenuButton(
                 items=[
                     ft.PopupMenuItem(
-                        text=tr(csv_file=lf, target_key="ABOUTHEADER", langcode=lang),
+                        tooltip=tr.tr(target_key="ABOUTHEADER", langcode=lang),
                         on_click=open_aboutdialog,
                     )
                 ]
@@ -86,11 +88,10 @@ def main(page: ft.Page):
     # page.media = ft.PageMediaData()
     page.adaptive = True
     page.scroll = True
+    version = ""
     aboutdialog = ft.AlertDialog(
-        title=ft.Text(tr(csv_file=lf, target_key="ABOUTHEADER", langcode=lang)),
-        content=ft.Text(
-            f"{tr(csv_file=lf, target_key='ABOUT', langcode=lang)} + {version}"
-        ),
+        title=ft.Text(tr.tr(target_key="ABOUTHEADER", langcode=lang)),
+        content=ft.Text(f"{tr.tr( target_key='ABOUT', langcode=lang)} + {version}"),
         scrollable=True,
     )
     # page.navigation_bar = ft.NavigationBar(
@@ -104,8 +105,8 @@ def main(page: ft.Page):
     #    adaptive=True,
     # )
 
-    tabquotes = quote_tab(page=page)
+    tabquotes = quote_tab(page=page, api_key=API_KEY)
     page.add(ft.SafeArea(tabquotes))
 
 
-ft.app(main)
+ft.run(main)

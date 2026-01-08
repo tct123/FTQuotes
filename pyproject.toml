@@ -3,29 +3,23 @@ name = "ftquotes"
 version = "2025.01.01"
 description = ""
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.10"
+authors = [{ name = "Flet developer", email = "you@example.com" }]
 dependencies = [
-  "flet==0.26.0.dev3912",
+  "flet>=0.80.1",
   "quotesgeneratorapi_wrapper",
   "python_dotenv",
   "mylocale",
 ]
 
+[dependency-groups]
+dev = ["flet[all]>=0.80.1"]
 
 [tool.flet]
-# org name in reverse domain name notation, e.g. "com.mycompany".
-# Combined with project.name to build bundle ID for iOS and Android apps
 org = "de.cmg"
-
-# project display name that is used as an app title on Android and iOS home screens,
-# shown in window titles and about app dialogs on desktop.
 product = "FTQuotes"
-
-# company name to display in about app dialogs
 company = "Creative Media Group"
-
-# copyright text to display in about app dialogs
-copyright = "Copyright (C) 2024 by Creative Media Group"
+copyright = "Copyright (C) 2026 by Creative Media Group"
 
 [tool.flet.app]
 path = "src"
