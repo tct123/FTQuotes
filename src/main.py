@@ -17,8 +17,10 @@ def quote_tab(page: ft.Page, api_key):
     # )
 
     page.update()
-    q, a = quote.getQuotes(
-        api_key=api_key,
+    q, a = str(
+        quote.getQuotes(
+            api_key=api_key,
+        )
     ).split(
         "\n\n"
     )  # category="age"
@@ -26,8 +28,10 @@ def quote_tab(page: ft.Page, api_key):
     author = ft.Text(a)
 
     def newquotes(e, api_key):
-        qnew, anew = quote.getQuotes(
-            api_key=api_key,
+        qnew, anew = str(
+            quote.getQuotes(
+                api_key=api_key,
+            )
         ).split(
             "\n\n"
         )  # category=dd.value
@@ -60,7 +64,7 @@ def quote_tab(page: ft.Page, api_key):
 
 def main(page: ft.Page):
     def open_aboutdialog(e):
-        page.open(aboutdialog)
+        page.show_dialog(aboutdialog)
         page.update()
 
     path = Path(__file__).resolve().parent
@@ -86,7 +90,7 @@ def main(page: ft.Page):
     )
     # page.media = ft.PageMediaData()
     page.adaptive = True
-    page.scroll = True
+    page.scroll = ft.ScrollMode.ALWAYS
     version = ""
     aboutdialog = ft.AlertDialog(
         title=ft.Text(ABOUTHEADER(page=page)),
